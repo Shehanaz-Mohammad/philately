@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NPDA Profile</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles_for_npda.css') }}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #121212; /* Dark background */
+            color: #e0e0e0; /* Light text color */
+        }
+        header {
+            background-color: #1f1f1f; /* Dark background for header */
+            color: #e0e0e0;
+            padding: 15px 0;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+        nav a {
+            color: #e0e0e0;
+            text-decoration: none;
+            font-size: 16px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        nav a:hover {
+            background-color: #bb86fc; /* Light purple hover effect */
+        }
+        .btn-recharge {
+            background-color: #f57c00; /* Orange color */
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .btn-recharge:hover {
+            background-color: #e64a19; /* Darker orange for hover effect */
+        }
+        .profile-header {
+            background: #292929; /* Dark background for profile header */
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px auto;
+            max-width: 800px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+        .profile-header h1 {
+            margin: 0;
+            font-size: 24px;
+            color: #e0e0e0;
+        }
+        .profile-header p {
+            margin: 10px 0;
+            font-size: 18px;
+            color: #bbb;
+        }
+        .personal-stamps {
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .carousel {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 10px 0;
+        }
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        .carousel-item {
+            min-width: 200px;
+            margin-right: 15px;
+        }
+        .carousel-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+        .carousel-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.7);
+            color: #e0e0e0;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 18px;
+            z-index: 10;
+        }
+        .carousel-button.left {
+            left: 10px;
+        }
+        .carousel-button.right {
+            right: 10px;
+        }
+        footer {
+            background-color: #1f1f1f; /* Dark background for footer */
+            color: #e0e0e0;
+            padding: 10px;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+        /* Styles for the payment modal */
+        #paymentModal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        #paymentModal div {
+            background: #292929; /* Dark background for modal */
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="{{ url_for('landing') }}">Home</a>
+            <a href="{{ url_for('npda_profile', email=user['email']) }}">Profile</a>
+            <a href="#">Logout</a>
+        </nav>
+    </header>
+    
+    <main>
+        <section class="profile-header">
+            <h1>Welcome, {{ user['name'] }}</h1>
+            <p>Your NPDA balance: ${{ user['balance'] }}</p>
+            <button class="btn-recharge" id="topUpBtn">Top Up</button>
+        </section>
+        
+        <section class="personal-stamps">
+            <h2>Your Stamps</h2>
+            <div class="carousel">
+                <div class="carousel-track">
+                    <!-- Dummy images for demonstration -->
+                    <div class="carousel-item">
+                        <img src="static/images/stamp1.jpeg" alt="Stamp 1">
+                        <p>Stamp 1</p>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="static/images/stamp2.jpeg" alt="Stamp 2">
+                        <p>Stamp 2</p>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="static/images/stamp3.jpeg" alt="Stamp 3">
+                        <p>Stamp 3</p>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="static/images/stamp4.jpeg" alt="Stamp 4">
+                        <p>Stamp 4</p>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="static/images/stamp5.jpeg" alt="Stamp 5">
+                        <p>Stamp 5</p>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="static/images/stamp6.jpeg" alt="Stamp 6">
+                        <p>Stamp 6</p>
+                    </div>
+                </div>
+                <!-- Carousel controls -->
+                <button class="carousel-button left">&#10094;</button>
+                <button class="carousel-button right">&#10095;</button>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <p>&copy; 2024 NPDA System</p>
+    </footer>
+
+    <!-- Payment Modal -->
+    <div id="paymentModal">
+        <div>
+            <h3>Payment Gateway</h3>
+            <p>Your payment was processed successfully! (This is a simulation)</p>
+            <button onclick="closePaymentModal()">Close</button>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('topUpBtn').addEventListener('click', () => {
+            document.getElementById('paymentModal').style.display = 'flex';
+        });
+
+        function closePaymentModal() {
+            document.getElementById('paymentModal').style.display = 'none';
+            // Optionally, redirect or update the page
+            window.location.href = '/npda_profile'; // Redirect to the profile page
+        }
+        
+        // Carousel functionality
+        const track = document.querySelector('.carousel-track');
+        const items = document.querySelectorAll('.carousel-item');
+        const itemWidth = items[0].offsetWidth + 15; // item width + margin
+        let index = 0;
+        const totalItems = items.length;
+
+        function moveCarousel() {
+            index = (index + 1) % totalItems;
+            track.style.transform = `translateX(${-index * itemWidth}px)`;
+        }
+
+        // Move carousel every 3 seconds
+        setInterval(moveCarousel, 3000);
+
+        // Carousel controls
+        document.querySelector('.carousel-button.left').addEventListener('click', () => {
+            index = (index - 1 + totalItems) % totalItems;
+            track.style.transform = `translateX(${-index * itemWidth}px)`;
+        });
+
+        document.querySelector('.carousel-button.right').addEventListener('click', () => {
+            index = (index + 1) % totalItems;
+            track.style.transform = `translateX(${-index * itemWidth}px)`;
+        });
+    </script>
+</body>
+</html>

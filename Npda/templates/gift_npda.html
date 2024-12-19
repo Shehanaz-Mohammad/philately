@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gift NPDA</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles_for_gift_npda.css') }}">
+</head>
+<body>
+    <header class="header-bg">
+        <nav>
+            <a href="{{ url_for('landing') }}">Home</a>
+            <a href="{{ url_for('create_npda') }}">Create NPDA Account</a>
+        </nav>
+    </header>
+    
+    <main>
+        <section class="gift-form">
+            <div class="container">
+                <h2>Gift NPDA</h2>
+                <form action="{{ url_for('gift_npda') }}" method="POST">
+                    <div class="form-group">
+                        <label for="recipient_name">Recipient's Name:</label>
+                        <input type="text" id="recipient_name" name="recipient_name" placeholder="Enter recipient's name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient_email">Recipient's Email:</label>
+                        <input type="email" id="recipient_email" name="recipient_email" placeholder="Enter recipient's email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="deposit_amount">Deposit Amount:</label>
+                        <input type="number" id="deposit_amount" name="deposit_amount" step="0.01" placeholder="Enter deposit amount" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="postal_code">Recipient's Postal Code:</label>
+                        <input type="text" id="postal_code" name="postal_code" placeholder="Enter recipient's postal code" required>
+                    </div>
+                    <button type="submit" class="btn-primary">Submit Gift</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 NPDA System</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,184 @@
+/* styles_for_gift_npda.css */
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #333; /* Dark background for the whole page */
+    color: #fff;
+    overflow-x: hidden;
+}
+
+/* Header Styles */
+header {
+    background: #222; /* Darker background for header */
+    padding: 20px;
+    position: relative;
+    color: #fff;
+}
+
+header .header-bg {
+    background-image: url('path-to-your-dark-gift-image.jpg');
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+nav a {
+    text-decoration: none;
+    color: #fff;
+    margin: 0 20px;
+    font-size: 18px;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+nav a:hover {
+    color: #ffcc00; /* Hover color for links */
+    transform: scale(1.1);
+}
+
+/* Main Section Styles */
+main {
+    padding: 20px;
+    text-align: center;
+}
+
+.gift-form {
+    background: rgba(0, 0, 0, 0.8); /* Semi-transparent dark background */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    margin: 20px auto;
+    padding: 30px;
+    max-width: 600px;
+    position: relative;
+    overflow: hidden;
+}
+
+.gift-form::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('path-to-your-diagonal-pattern.png') repeat;
+    opacity: 0.2;
+    z-index: 0;
+    transform: rotate(-10deg);
+}
+
+h2 {
+    font-family: 'Playfair Display', serif;
+    color: #ffcc00;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Form Styles */
+form {
+    display: grid;
+    gap: 15px;
+    position: relative;
+    z-index: 1;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #fff;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #555;
+    border-radius: 5px;
+    font-size: 16px;
+    background: #444;
+    color: #fff;
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="number"]:focus {
+    border-color: #ffcc00;
+    outline: none;
+}
+
+/* Button Styles */
+.btn-primary {
+    background: #ff6600;
+    color: #fff;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+    z-index: 1;
+}
+
+.btn-primary:hover {
+    background: #e55b00;
+    transform: scale(1.05);
+}
+
+/* Footer Styles */
+footer {
+    background: #222;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Placeholder for image backgrounds */
+.header-bg {
+    background-image: url('path-to-your-header-image.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.gift-image {
+    background-image: url('path-to-your-gift-image.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+/* Animations */
+@keyframes confetti {
+    0% { opacity: 0; transform: translateY(-10px); }
+    100% { opacity: 1; transform: translateY(100px); }
+}
+
+.confetti {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background: url('path-to-your-confetti-image.png') repeat;
+    animation: confetti 5s linear infinite;
+}

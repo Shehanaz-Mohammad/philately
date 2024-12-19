@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h2>Welcome, {{ session['username'] }}</h2>
+    <p>Your NPDA Balance: ₹{{ account['balance'] }}</p>
+
+    <h3>Top Up Your Account</h3>
+    <form method="POST">
+        <label for="topup_amount">Top-up Amount:</label>
+        <input type="number" name="topup_amount" required>
+        <button type="submit">Top Up</button>
+    </form>
+</body>
+</html>

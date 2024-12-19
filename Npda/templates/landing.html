@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NPDA - National Philately Deposit Account</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <header class="navbar">
+        <div class="container">
+            <h1 class="logo">NPDA</h1>
+            <nav>
+                <ul>
+                    <li><a href="{{ url_for('landing') }}">Home</a></li>
+                    <a href="{{ url_for('login') }}" class="btn-primary">NPDA Login</a>
+                    <li><a href="#">Features</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h2>Manage Your Philatelic Account with Ease</h2>
+            <p>Access philatelic materials from all postal circles across India.</p>
+            <a href="{{ url_for('login') }}" class="btn-primary">Get Started</a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 National Philately Deposit Account. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
